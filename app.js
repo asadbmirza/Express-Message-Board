@@ -1,7 +1,8 @@
 const express = require("express");
 const path = require("node:path");
-const msgRouter = require("./routes/new");
+const newRouter = require("./routes/new");
 const indexRouter = require("./routes/index");
+const msgRouter = require("./routes/msg")
 
 const app = express();
 
@@ -26,8 +27,12 @@ app.use((req, res, next) => {
     req.messages = messages;
     next();
 })
-app.use("/new", msgRouter);
+app.use("/new", newRouter);
+app.use("/msg", msgRouter);
 app.use("/", indexRouter);
+app.use("/*", (err, req, res, next) => {
+    res.status(404).send("Error Page not Found");
+});
 
 
 app.listen(3000, () => console.log("listening on port 3000"));

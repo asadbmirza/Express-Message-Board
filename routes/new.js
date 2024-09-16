@@ -1,11 +1,11 @@
 const { Router } = require("express");
 const path = require("node:path");
 
-const msgRouter = Router();
-const msgController = require(path.join(__dirname, "..", "controllers", "newController.js"));
+const newRouter = Router();
+const newController = require(path.join(__dirname, "..", "controllers", "newController.js"));
 
 
-msgRouter.get("/", msgController.get);
-msgRouter.post("/", msgController.post);
+newRouter.get("/", newController.get);
+newRouter.post("/", newController.post);
 
-module.exports = msgRouter;
+module.exports = newRouter;
